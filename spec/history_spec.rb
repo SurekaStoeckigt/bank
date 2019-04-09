@@ -5,7 +5,7 @@ describe 'Transaction history' do
 
   it 'can display transaction history to user' do
     account = Account.new
-    expect(account.history.all_transactions).to eq(nil)
+    expect(account.history.all_transactions).to eq(Array.new)
   end
 
 end

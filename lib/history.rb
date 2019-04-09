@@ -3,7 +3,7 @@ class History
 attr_reader :all_transactions
 
   def initialize
-    @all_transactions = nil
+    @all_transactions = Array.new
   end
 
 end

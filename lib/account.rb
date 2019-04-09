@@ -10,6 +10,7 @@ class Account
   end
 
   def withdraw(amount)
+    raise "You cannot withdraw more money than is available in your account" if @balance < amount
     @balance -=amount
   end
 

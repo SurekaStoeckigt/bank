@@ -13,4 +13,8 @@ class Account
     @balance -=amount
   end
 
+  def display_balance
+    "You have £#{@balance} in your account"
+  end
+
 end

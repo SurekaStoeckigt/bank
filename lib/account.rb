@@ -1,8 +1,11 @@
-class Account
-  attr_reader :balance
+require './lib/history.rb'
 
-  def initialize
+class Account
+  attr_reader :balance, :history
+
+  def initialize(history = History.new)
     @balance = 0
+    @history = history
   end
 
   def deposit(amount)

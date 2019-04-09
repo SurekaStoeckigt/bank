@@ -1,6 +1,16 @@
 require './lib/account.rb'
 
 describe 'Account' do
+subject(:account) {Account.new(mock_history) }
+let(:mock_transaction) { class_double('Transaction') }
+let(:mock_history) { double('history', all_transactions: [mock_transaction], record_transaction: [])}
+
+describe "#show_balance" do
+  it 'shows current balance' do
+    expect(account.display_balance).to eq("You have £0 in your account")
+  end
+
+end
 
   it 'allows user to make a deposit' do
     account = Account.new
@@ -19,12 +29,6 @@ describe 'Account' do
     account = Account.new
     account.deposit(300)
     expect { account.withdraw(400) }.to raise_error("You cannot withdraw more money than is available in your account")
-  end
-
-  it 'raises error if user tries to withdraw negative amount' do
-  end
-
-  it 'raises error if user tries to deposit negative amount' do
   end
 
 end

@@ -20,7 +20,7 @@ class Account
     error_if_invalid(amount)
     raise "You cannot withdraw more money than is available in your account" if (@balance) < amount
     @balance -=amount
-    history.record_transaction(amount, "", balance)
+    @history.record_transaction(amount, "", balance)
 
   end
 
@@ -28,7 +28,9 @@ class Account
     "You have £#{@balance} in your account"
   end
 
+private
 def error_if_invalid(amount)
+  raise "Non-integer amount detected: please enter a positive integer" unless amount.is_a? Integer
   raise "Negative integer detected: please enter a positive integer" unless amount.positive?
 end
 end

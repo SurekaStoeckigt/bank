@@ -21,7 +21,9 @@ end
   it 'allows user to withdraw an amount less than available funds' do
     account = Account.new
     account.deposit(300)
+    p account.balance
     account.withdraw(200)
+    p account.balance
     expect(account.balance).to eq(100)
   end
 
@@ -31,4 +33,8 @@ end
     expect { account.withdraw(400) }.to raise_error("You cannot withdraw more money than is available in your account")
   end
 
+ it 'only accepts positive integers' do
+   expect {account.withdraw(-200) }.to raise_error("Negative integer detected: please enter a positive integer")
+
+ end
 end

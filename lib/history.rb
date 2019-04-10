@@ -13,10 +13,13 @@ attr_reader :all_transactions
   end
 
   def show_statement
-    all_transactions.each do |action|
-      p action
+    statement = "date || credit || debit || balance \n"
+    @all_transactions.each do |trans|
+      statement += "#{trans.date} || #{trans.credit}.00 || #{trans.debit} || #{trans.balance}.00\n" if trans.debit == ""
+      statement += "#{trans.date} || #{trans.credit} || #{trans.debit}.00 || #{trans.balance}.00\n" if trans.credit == ""
     end
-
+    puts statement
+    return statement
   end
 
 end
